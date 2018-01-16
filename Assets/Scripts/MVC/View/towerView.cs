@@ -45,7 +45,7 @@ namespace View
 
     namespace impl
     {
-        public class towerView : MonoBehaviour, ITowerView
+        public class TowerView : MonoBehaviour, ITowerView
         {
             public string speedUpg { set { _SpeedUpg.text = value; } }
             public string speedUpgLabel { set { _SpeedUpgLabel.text = value; } }
@@ -57,7 +57,7 @@ namespace View
             public string speedLabel { set { _SpeedLabel.text = value; } }
             public string range { set { _Range.text = value; } }
             public string rangeLabel { set { _RangeLabel.text = value; } }
-            
+
             public event EventHandler<TowerViewValueDeleteChangedEventArgs> OnValueDeleteChanged;
             public event EventHandler<TowerViewValueUpgradeChangedEventArgs> OnValueUpgradeChanged;
 

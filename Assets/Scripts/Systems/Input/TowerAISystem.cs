@@ -27,7 +27,7 @@ namespace Systems.Input
                 if (entity.towerAI.counter > entity.towerAI.Shootspeed)
                 {
                     
-                    Collider[] colliders = Physics.OverlapSphere(entity.view.Value.transform.position, entity.towerAI.range);
+                    Collider[] colliders = Physics.OverlapSphere(entity.view.Value.transform.position, entity.towerAI.Range);
                     
                     if(colliders.Length > 1)
                     {

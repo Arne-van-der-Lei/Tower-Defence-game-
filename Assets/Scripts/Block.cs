@@ -27,9 +27,4 @@ public class Block : MonoBehaviour {
 
         entity.isTowerDelete = true;
     }
-
-    private void OnMouseUp()
-    {
-        display.SetActive(!display.activeSelf);
-    }
 }

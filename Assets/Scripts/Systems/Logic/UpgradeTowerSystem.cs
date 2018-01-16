@@ -25,7 +25,7 @@ namespace Systems.Logic
                 }
                 else
                 {
-                    entity.tileTower.Tower.towerAI.range += 2;
+                    entity.tileTower.Tower.towerAI.Range += 2;
                     entity.tileTower.Tower.towerAI.Shootspeed *= 0.9f;
                 }
             }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public sealed partial class GameContext
 {
+    public EventHandler<TowerAiComponentEventArgs> eventHandler;
     public GameEntity CreateEnemy(int id, Vector3 startPosition, Quaternion startRotation,Transform target)
     {
         var entity = CreateEntity();
@@ -30,6 +32,7 @@ public sealed partial class GameContext
         entity.AddPrefab("Prefabs/Tower");
         entity.AddBulletPrefab(1, 80.0f, "Prefabs/Bullet");
         entity.AddTowerAI(0,5,1);
+        entity.towerAI.TowerAiEventHandler += eventHandler;
 
         return entity;
     }
@@ -60,3 +63,15 @@ public sealed partial class GameContext
     }
 }
 
+public sealed partial class GameEntity
+{
+    public void AddTowerAI(float newCounter, float newRange, float newShootspeed)
+    {
+        var index = GameComponentsLookup.TowerAI;
+        var component = CreateComponent<Components.TowerAIComponent>(index);
+        component.counter = newCounter;
+        component.Range = newRange;
+        component.Shootspeed = newShootspeed;
+        AddComponent(index, component);
+    }
+}
