@@ -12,6 +12,7 @@ namespace Systems.Cleanup
             Add(new ShootCleanupSystem(contexts));
             Add(new CollisionCleanupSystem(contexts));
             Add(new TowerUpgradeCleanupSystem(contexts));
+            Add(new DoDamageCleanup(contexts));
         }
     }
 }

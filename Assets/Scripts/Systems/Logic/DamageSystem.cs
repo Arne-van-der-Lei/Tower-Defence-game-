@@ -23,7 +23,7 @@ namespace Systems.Logic
                 if(e.health.Health <= 0)
                 {
                     e.isDestroy = true;
-                    //TozerDefenceAplicqtion.Money += e.money.Value;
+                    TozerDefenceAplicqtion.Instance.Money += e.money.Value;
                 }
             }
         }

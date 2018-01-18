@@ -11,14 +11,15 @@ public sealed partial class GameContext
     {
         var entity = CreateEntity();
         entity.isEnemy = true;
-        entity.AddHealth(20,20);
+        entity.AddHealth(2,2);
         entity.AddStartPosition(startPosition);
         entity.AddStartRotation(startRotation);
         entity.AddMoveSpeed(80.0f);
         entity.AddPrefab("Prefabs/Enemie");
         entity.AddPoint(target);
         entity.AddEnemyAi(HexGenerator.Instance.FindPathGreedyBestFirstSearch(HexGenerator.Instance.GetBlock(target.position), HexGenerator.Instance.GetBlocks()[HexGenerator.Instance.GetBlocks().Length - 1]),0);
-        
+        entity.AddMoney(20);
+
         return entity;
     }
 

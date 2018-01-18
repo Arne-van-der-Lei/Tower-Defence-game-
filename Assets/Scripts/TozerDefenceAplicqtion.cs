@@ -11,16 +11,24 @@ using Model;
 public class TozerDefenceAplicqtion : MonoBehaviour {
 
     public Transform SpawnpointEnemys;
+
+    public MoneyView MoneyView;
     public TowerView view;
 
-    public static int Money = 500;
+    public static TozerDefenceAplicqtion Instance;
+
+    private MoneyModel MoneyModel;
+
     RootSystem _rootSystem;
 
     List<IController> _controllers;
 
 	// Use this for initialization
 	void Start () {
+        Instance = this;
+
         _controllers = new List<IController>();
+
         Contexts contexts = Contexts.sharedInstance;
         GameContext context = contexts.game;
         _rootSystem = new RootSystem(contexts);
@@ -31,7 +39,15 @@ public class TozerDefenceAplicqtion : MonoBehaviour {
 
         context.CreateEnemy(1, SpawnpointEnemys.position, SpawnpointEnemys.rotation, transform);
         //context.CreateTower(2, new Vector3(0, 0, 0), Quaternion.identity);
-        
+
+        MoneyModel = new MoneyModel();
+        MoneyController MCont = new MoneyController
+        {
+            View = MoneyView,
+            Model = MoneyModel
+        };
+        MCont.Init();
+        MoneyModel.Money = 40;
 
         TowerController TCont = new TowerController
         {
@@ -66,5 +82,18 @@ public class TozerDefenceAplicqtion : MonoBehaviour {
     private void OnDestroy()
     {
         _rootSystem.TearDown();
+    }
+
+    public int Money
+    {
+        get
+        {
+            return MoneyModel.Money;
+        }
+
+        set
+        {
+            MoneyModel.Money = value;
+        }
     }
 }

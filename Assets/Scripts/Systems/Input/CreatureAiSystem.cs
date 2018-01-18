@@ -29,7 +29,10 @@ namespace Systems.Input
                 if (Vector3.Distance(entity.point.Value.position,entity.view.Value.transform.position) <= 0.1)
                 {
                     entity.point.Value.position = entity.enemyAi.path[entity.enemyAi.index].transform.position;
-                    entity.enemyAi.index++;
+                    if(entity.enemyAi.index < entity.enemyAi.path.Length-1)
+                    {
+                        entity.enemyAi.index++;
+                    }
                 }
             }
         }
