@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Model
 {
@@ -16,11 +17,17 @@ namespace Model
             Block = block;
         }
     }
-
+    class voidChangedEventArgs : EventArgs
+    {
+        public voidChangedEventArgs()
+        {
+        }
+    }
     class TowerModel
     {
 
         public event EventHandler<GameEntityChangedEventArgs> OnValueChanged;
+        public event EventHandler<voidChangedEventArgs> OnColorChanged;
 
         private GameEntity _tower;
         private GameEntity _block;
@@ -35,6 +42,7 @@ namespace Model
             set
             {
                 _tower = value;
+                OnColorChanged(this, new voidChangedEventArgs());
                 OnValueChanged(this, new GameEntityChangedEventArgs(_tower, _block));
             }
         }
@@ -48,7 +56,9 @@ namespace Model
             set
             {
                 _block = value;
+                OnColorChanged(this, new voidChangedEventArgs());
                 OnValueChanged(this, new GameEntityChangedEventArgs(_tower, _block));
+                Debug.Log("cookies");
             }
         }
 

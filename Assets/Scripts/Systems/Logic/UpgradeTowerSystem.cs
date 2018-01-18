@@ -1,15 +1,20 @@
-﻿using Entitas;
+﻿using Components;
+using Entitas;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using UnityEngine;
+using View.impl;
 
 namespace Systems.Logic
 {
     class UpgradeTowerSystem : ReactiveSystem<GameEntity>
     {
         private Contexts _contexts;
+        public static TowerModel model;
+
         public UpgradeTowerSystem(Contexts context) : base(context.game)
         {
             _contexts = context;
@@ -22,6 +27,8 @@ namespace Systems.Logic
                 if (!entity.hasTileTower)
                 {
                     entity.AddTileTower(_contexts.game.CreateTower(0, entity.view.Value.transform.position, Quaternion.identity),true);
+                    model.Tower = entity.tileTower.Tower;
+                    model.Block.view.Value.GetComponent<BlockView>().Color = true;
                 }
                 else
                 {

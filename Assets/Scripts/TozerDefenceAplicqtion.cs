@@ -5,11 +5,15 @@ using Systems;
 using Entitas.Unity;
 using Controller;
 using View.impl;
+using Systems.Logic;
+using Model;
 
 public class TozerDefenceAplicqtion : MonoBehaviour {
 
     public Transform SpawnpointEnemys;
     public TowerView view;
+
+    public static int Money = 500;
     RootSystem _rootSystem;
 
     List<IController> _controllers;
@@ -23,21 +27,22 @@ public class TozerDefenceAplicqtion : MonoBehaviour {
 
         _rootSystem.Initialize();
 
+        HexGenerator.Instance = GetComponent<HexGenerator>();
+
         context.CreateEnemy(1, SpawnpointEnemys.position, SpawnpointEnemys.rotation, transform);
         //context.CreateTower(2, new Vector3(0, 0, 0), Quaternion.identity);
-
-        HexGenerator gen = GetComponent<HexGenerator>();
+        
 
         TowerController TCont = new TowerController
         {
             View = view
         };
-        Model.TowerModel model = new Model.TowerModel();
+        TowerModel model = new TowerModel();
         TCont.Entity = model;
         TCont.Init();
-        context.eventHandler = TCont.TowerValueChanged;
+        UpgradeTowerSystem.model = model;
 
-        foreach (Block cell in gen._cells)
+        foreach (Block cell in HexGenerator.Instance.GetBlocks())
         {
             GameEntity e = context.CreateTile(cell.gameObject);
             cell.gameObject.Link(e, context);

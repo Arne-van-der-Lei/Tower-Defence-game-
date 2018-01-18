@@ -10,6 +10,7 @@ namespace Systems.Input
         public InputSystem(Contexts contexts) : base("Input Systems")
         {
             Add(new TowerAISystem(contexts));
+            Add(new CreatureAiSystem(contexts));
         }
     }
 }

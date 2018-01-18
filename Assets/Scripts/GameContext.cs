@@ -7,17 +7,18 @@ using UnityEngine;
 
 public sealed partial class GameContext
 {
-    public EventHandler<TowerAiComponentEventArgs> eventHandler;
     public GameEntity CreateEnemy(int id, Vector3 startPosition, Quaternion startRotation,Transform target)
     {
         var entity = CreateEntity();
         entity.isEnemy = true;
-        entity.AddHealth(1,1);
+        entity.AddHealth(20,20);
         entity.AddStartPosition(startPosition);
         entity.AddStartRotation(startRotation);
         entity.AddMoveSpeed(80.0f);
         entity.AddPrefab("Prefabs/Enemie");
         entity.AddPoint(target);
+        entity.AddEnemyAi(HexGenerator.Instance.FindPathGreedyBestFirstSearch(HexGenerator.Instance.GetBlock(target.position), HexGenerator.Instance.GetBlocks()[HexGenerator.Instance.GetBlocks().Length - 1]),0);
+        
         return entity;
     }
 
@@ -30,9 +31,8 @@ public sealed partial class GameContext
         entity.AddStartPosition(startPosition);
         entity.AddStartRotation(startRotation);
         entity.AddPrefab("Prefabs/Tower");
-        entity.AddBulletPrefab(1, 80.0f, "Prefabs/Bullet");
+        entity.AddBulletPrefab(1, 800.0f, "Prefabs/Bullet");
         entity.AddTowerAI(0,5,1);
-        entity.towerAI.TowerAiEventHandler += eventHandler;
 
         return entity;
     }

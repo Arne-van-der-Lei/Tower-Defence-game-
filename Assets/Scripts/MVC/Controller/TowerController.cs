@@ -1,9 +1,9 @@
 ﻿using Model;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 using View;
 
 namespace Controller
@@ -21,7 +21,6 @@ namespace Controller
             Debug.Assert(View != null);
 #endif
             
-
             //model change
             Entity.OnValueChanged += ModelValueChanged;
 
@@ -40,13 +39,20 @@ namespace Controller
         }
         private void ModelValueChanged(object sender, GameEntityChangedEventArgs eventArgs)
         {
-            if(eventArgs.Tower != null)
+            if (eventArgs.Tower != null)
+            {
                 eventArgs.Tower.towerAI.TowerAiEventHandler += TowerValueChanged;
+                SetValue(eventArgs.Tower.towerAI.Range, eventArgs.Tower.towerAI.Shootspeed);
+                return;
+            }
+
+            SetValue(0, 0);
         }
 
         public void TowerValueChanged(object sender, Components.TowerAiComponentEventArgs eventArgs)
         {
             SetValue(eventArgs.range,eventArgs.shootSpeed);
+            Debug.Log("cookies");
         }
 
         private void SetValue(float range, float Shootspeed)

@@ -21,12 +21,28 @@ namespace Controller
             Debug.Assert(View != null);
 #endif
             View.OnClickChanged += View_OnClickChanged;
+            Grid.OnColorChanged += Grid_OnColorChanged;
+            Grid.OnValueChanged += Grid_OnValueChanged;
+        }
+
+        private void Grid_OnValueChanged(object sender, Model.GameEntityChangedEventArgs e)
+        {
+            View.HasTower = (View.GetComponent<EntityLink>().entity as GameEntity).hasTileTower;
+        }
+
+        private void Grid_OnColorChanged(object sender, Model.voidChangedEventArgs e)
+        {
+            View.Color = false;
         }
 
         private void View_OnClickChanged(object sender, View.BlockViewClickChangedEventArgs e)
         {
-            Grid.Block = View.GetComponent<EntityLink>().entity as GameEntity;
-            Grid.Tower = Grid.Block.hasTileTower == true ?  Grid.Block.tileTower.Tower:null;
+            GameEntity entity = View.GetComponent<EntityLink>().entity as GameEntity;
+            Grid.Tower = entity.hasTileTower == true ? entity.tileTower.Tower : null;
+            Grid.Block = entity;
+
+            View.Color = true;
         }
+
     }
 }

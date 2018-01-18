@@ -14,24 +14,25 @@ public static class GameComponentsLookup {
     public const int Damage = 3;
     public const int Destroy = 4;
     public const int DoDamage = 5;
-    public const int Enemy = 6;
-    public const int Grid = 7;
-    public const int Health = 8;
-    public const int MoveSpeed = 9;
-    public const int Point = 10;
-    public const int Prefab = 11;
-    public const int Shoot = 12;
-    public const int StartPosition = 13;
-    public const int StartRotation = 14;
-    public const int Tile = 15;
-    public const int TileTower = 16;
-    public const int TowerAI = 17;
-    public const int Tower = 18;
-    public const int TowerDelete = 19;
-    public const int TowerUpgrade = 20;
-    public const int View = 21;
+    public const int EnemyAi = 6;
+    public const int Enemy = 7;
+    public const int Grid = 8;
+    public const int Health = 9;
+    public const int MoveSpeed = 10;
+    public const int Point = 11;
+    public const int Prefab = 12;
+    public const int Shoot = 13;
+    public const int StartPosition = 14;
+    public const int StartRotation = 15;
+    public const int Tile = 16;
+    public const int TileTower = 17;
+    public const int TowerAI = 18;
+    public const int Tower = 19;
+    public const int TowerDelete = 20;
+    public const int TowerUpgrade = 21;
+    public const int View = 22;
 
-    public const int TotalComponents = 22;
+    public const int TotalComponents = 23;
 
     public static readonly string[] componentNames = {
         "Bullet",
@@ -40,6 +41,7 @@ public static class GameComponentsLookup {
         "Damage",
         "Destroy",
         "DoDamage",
+        "EnemyAi",
         "Enemy",
         "Grid",
         "Health",
@@ -65,6 +67,7 @@ public static class GameComponentsLookup {
         typeof(Components.DamageComponent),
         typeof(Components.DestroyComponent),
         typeof(Components.DoDamageComponent),
+        typeof(Components.EnemyAiComponent),
         typeof(Components.EnemyComponent),
         typeof(Components.GridComponent),
         typeof(Components.HealthComponent),
