@@ -43,15 +43,18 @@ namespace Controller
             {
                 eventArgs.Tower.towerAI.TowerAiEventHandler += TowerValueChanged;
                 SetValue(eventArgs.Tower.towerAI.Range, eventArgs.Tower.towerAI.Shootspeed);
+                Setupgrade(eventArgs.Tower.towerAI.Range+2, eventArgs.Tower.towerAI.Shootspeed * 0.9f, 20);
                 return;
             }
 
             SetValue(0, 0);
+            Setupgrade(5,1,20);
         }
 
         public void TowerValueChanged(object sender, Components.TowerAiComponentEventArgs eventArgs)
         {
             SetValue(eventArgs.range,eventArgs.shootSpeed);
+            Setupgrade(eventArgs.range + 2, eventArgs.shootSpeed * 0.9f, 20);
             Debug.Log("cookies");
         }
 
@@ -59,6 +62,13 @@ namespace Controller
         {
             View.range = string.Format("{0}", range);
             View.speed = string.Format("{0}", Shootspeed);
+        }
+
+        private void Setupgrade(float range, float shootspeed, float cost)
+        {
+            View.costUpg = string.Format("{0} $", cost);
+            View.speedUpg = string.Format("{0}", shootspeed);
+            View.rangeUpg = string.Format("{0}", range);
         }
     }
 }

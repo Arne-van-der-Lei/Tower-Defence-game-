@@ -35,7 +35,6 @@ namespace View
 #if DEBUG
                 Assert.IsNotNull(_Money);
 #endif
-
             }
         }
     }

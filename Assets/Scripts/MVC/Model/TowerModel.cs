@@ -58,7 +58,6 @@ namespace Model
                 _block = value;
                 OnColorChanged(this, new voidChangedEventArgs());
                 OnValueChanged(this, new GameEntityChangedEventArgs(_tower, _block));
-                Debug.Log("cookies");
             }
         }
 

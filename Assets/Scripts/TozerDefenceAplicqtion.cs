@@ -37,7 +37,7 @@ public class TozerDefenceAplicqtion : MonoBehaviour {
 
         HexGenerator.Instance = GetComponent<HexGenerator>();
 
-        context.CreateEnemy(1, SpawnpointEnemys.position, SpawnpointEnemys.rotation, transform);
+        //context.CreateEnemy(1, SpawnpointEnemys.position, SpawnpointEnemys.rotation, transform);
         //context.CreateTower(2, new Vector3(0, 0, 0), Quaternion.identity);
 
         MoneyModel = new MoneyModel();
