@@ -23,14 +23,14 @@ namespace Systems.Logic
             foreach (var entity in _identifiableEnemys)
             {
                 GameObject gameObject = entity.view.Value;
-                if (entity.point.Value == null)
+                if (entity.point.Value == new Vector3(0,0,0))
                 {
                     entity.isDestroy = true;
                     return;
                 }
 
                 Rigidbody body = gameObject.GetComponent<Rigidbody>();
-                Vector3 dir = -gameObject.transform.position + entity.point.Value.position;
+                Vector3 dir = -gameObject.transform.position + entity.point.Value;
 
                 body.velocity = dir.normalized * entity.moveSpeed.Value * Time.deltaTime;
             }

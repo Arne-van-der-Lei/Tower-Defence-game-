@@ -20,7 +20,7 @@ namespace View
 
     namespace impl
     {
-        class StartView : MonoBehaviour, IStartView
+        public class StartView : MonoBehaviour, IStartView
         {
             public event EventHandler<StartViewStartChangedEventArgs> OnNextWaveChanged;
 

@@ -12,8 +12,7 @@ namespace Controller
     {
         public TowerModel Entity { private get; set; }
         public ITowerView View { private get; set; }
-
-
+        
         public void Init()
         {
 #if DEBUG
@@ -43,7 +42,7 @@ namespace Controller
             {
                 eventArgs.Tower.towerAI.TowerAiEventHandler += TowerValueChanged;
                 SetValue(eventArgs.Tower.towerAI.Range, eventArgs.Tower.towerAI.Shootspeed);
-                Setupgrade(eventArgs.Tower.towerAI.Range+2, eventArgs.Tower.towerAI.Shootspeed * 0.9f, 20);
+                Setupgrade(eventArgs.Tower.towerAI.Range+2, eventArgs.Tower.towerAI.Shootspeed * 0.9f, 20 * eventArgs.Tower.towerAI.Tier * 1.1f);
                 return;
             }
 
@@ -54,7 +53,7 @@ namespace Controller
         public void TowerValueChanged(object sender, Components.TowerAiComponentEventArgs eventArgs)
         {
             SetValue(eventArgs.range,eventArgs.shootSpeed);
-            Setupgrade(eventArgs.range + 2, eventArgs.shootSpeed * 0.9f, 20);
+            Setupgrade(eventArgs.range + 2, eventArgs.shootSpeed * 0.9f, 20 * eventArgs.tier * 1.1f);
             Debug.Log("cookies");
         }
 

@@ -7,7 +7,12 @@ namespace Model
 {
     class StartModel
     {
-        
+        public int multiplyer = 0;
 
+        public void Spawn()
+        {
+            multiplyer++;
+            TozerDefenceAplicqtion.Instance.SpawnEnemies(multiplyer);
+        }
     }
 }

@@ -20,20 +20,21 @@ public static class GameComponentsLookup {
     public const int Health = 9;
     public const int Money = 10;
     public const int MoveSpeed = 11;
-    public const int Point = 12;
-    public const int Prefab = 13;
-    public const int Shoot = 14;
-    public const int StartPosition = 15;
-    public const int StartRotation = 16;
-    public const int Tile = 17;
-    public const int TileTower = 18;
-    public const int TowerAI = 19;
-    public const int Tower = 20;
-    public const int TowerDelete = 21;
-    public const int TowerUpgrade = 22;
-    public const int View = 23;
+    public const int PlayerDamage = 12;
+    public const int Point = 13;
+    public const int Prefab = 14;
+    public const int Shoot = 15;
+    public const int StartPosition = 16;
+    public const int StartRotation = 17;
+    public const int Tile = 18;
+    public const int TileTower = 19;
+    public const int TowerAI = 20;
+    public const int Tower = 21;
+    public const int TowerDelete = 22;
+    public const int TowerUpgrade = 23;
+    public const int View = 24;
 
-    public const int TotalComponents = 24;
+    public const int TotalComponents = 25;
 
     public static readonly string[] componentNames = {
         "Bullet",
@@ -48,6 +49,7 @@ public static class GameComponentsLookup {
         "Health",
         "Money",
         "MoveSpeed",
+        "PlayerDamage",
         "Point",
         "Prefab",
         "Shoot",
@@ -75,6 +77,7 @@ public static class GameComponentsLookup {
         typeof(Components.HealthComponent),
         typeof(Components.MoneyComponent),
         typeof(Components.MoveSpeedComponent),
+        typeof(Components.PlayerDamageComponent),
         typeof(Components.PointComponent),
         typeof(Components.PrefabComponent),
         typeof(Components.ShootComponent),

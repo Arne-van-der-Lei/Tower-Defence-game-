@@ -22,8 +22,9 @@ namespace Systems.Logic
             {
                 if (entity.collision.collider.tag.Equals("Enemy"))
                 {
-                    GameEntity entityEnemy = entity.collision.collider.gameObject.GetComponent<EntityLink>().entity as GameEntity;
-                    entityEnemy.AddDoDamage(entity.damage.Damage);
+                    GameEntity entityEnemy = entity.collision.collider.gameObject.GetEntityLink().entity as GameEntity;
+                    if(!entityEnemy.hasDoDamage)
+                        entityEnemy.AddDoDamage(entity.damage.Damage);
                     entity.isDestroy = true;
                 }
             }

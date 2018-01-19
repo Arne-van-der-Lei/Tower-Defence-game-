@@ -35,7 +35,8 @@ namespace Systems.Input
                         {
                             if(collider.tag == "Enemy")
                             {
-                                entity.AddShoot(collider.gameObject.transform);
+                                if(!entity.hasShoot)
+                                    entity.AddShoot(collider.gameObject.transform);
                             }
                         }
                     }

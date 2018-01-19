@@ -14,8 +14,8 @@ public class HexGenerator : MonoBehaviour {
 
     [SerializeField] private Block[] _cells;
 
-    [SerializeField] public Block Start;
-    [SerializeField] public Block End;
+    //[SerializeField] public Block Start;
+    //[SerializeField] public Block End;
     [SerializeField] public float _speed = 0.2f;
 
     public static HexGenerator Instance;
@@ -45,14 +45,8 @@ public class HexGenerator : MonoBehaviour {
             }
         }
 
-        Start = _cells[0];
-        End = _cells[_cells.Length - 1];
-    }
-
-
-    public void GetPath()
-    {
-        FindPathGreedyBestFirstSearch(Start, End);
+        //Start = _cells[0];
+        //End = _cells[_cells.Length - 1];
     }
 
     public Block[] FindPathGreedyBestFirstSearch( Block start, Block end)

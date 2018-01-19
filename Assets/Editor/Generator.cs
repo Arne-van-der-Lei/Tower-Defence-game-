@@ -19,7 +19,7 @@ public class Generator : Editor {
         if (GUILayout.Button("Get Path"))
         {
             HexGenerator maze = (HexGenerator)target;
-            maze.GetPath();
+            //maze.GetPath();
         }
     }
 }

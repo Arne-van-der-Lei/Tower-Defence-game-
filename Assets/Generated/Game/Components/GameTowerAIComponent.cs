@@ -11,23 +11,25 @@ public partial class GameEntity {
     public Components.TowerAIComponent towerAI { get { return (Components.TowerAIComponent)GetComponent(GameComponentsLookup.TowerAI); } }
     public bool hasTowerAI { get { return HasComponent(GameComponentsLookup.TowerAI); } }
 
-    public void AddTowerAI(System.EventHandler<Components.TowerAiComponentEventArgs> newTowerAiEventHandler, float newCounter, float newRange, float newShootspeed) {
+    public void AddTowerAI(System.EventHandler<Components.TowerAiComponentEventArgs> newTowerAiEventHandler, float newCounter, float newRange, float newShootspeed, int newTier) {
         var index = GameComponentsLookup.TowerAI;
         var component = CreateComponent<Components.TowerAIComponent>(index);
         component.TowerAiEventHandler = newTowerAiEventHandler;
         component.counter = newCounter;
         component.Range = newRange;
         component.Shootspeed = newShootspeed;
+        component.Tier = newTier;
         AddComponent(index, component);
     }
 
-    public void ReplaceTowerAI(System.EventHandler<Components.TowerAiComponentEventArgs> newTowerAiEventHandler, float newCounter, float newRange, float newShootspeed) {
+    public void ReplaceTowerAI(System.EventHandler<Components.TowerAiComponentEventArgs> newTowerAiEventHandler, float newCounter, float newRange, float newShootspeed, int newTier) {
         var index = GameComponentsLookup.TowerAI;
         var component = CreateComponent<Components.TowerAIComponent>(index);
         component.TowerAiEventHandler = newTowerAiEventHandler;
         component.counter = newCounter;
         component.Range = newRange;
         component.Shootspeed = newShootspeed;
+        component.Tier = newTier;
         ReplaceComponent(index, component);
     }
 

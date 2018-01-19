@@ -13,7 +13,9 @@ namespace Systems.Logic
             Add(new ShootSystem(contexts));
             Add(new BulletCollisionSystem(contexts));
             Add(new UpgradeTowerSystem(contexts));
+            Add(new PlayerDamageSystem(contexts));
             Add(new DamageSystem(contexts));
+            Add(new TowerDeleteSystem(contexts));
             Add(new DestroySystem(contexts));
         }
     }

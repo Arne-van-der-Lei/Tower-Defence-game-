@@ -24,20 +24,25 @@ namespace Systems.Logic
         {
             foreach(GameEntity entity in entities)
             {
-                if (TozerDefenceAplicqtion.Instance.Money >= 20)
+                if (!entity.hasTileTower)
                 {
-                    if (!entity.hasTileTower)
+                    if (TozerDefenceAplicqtion.Instance.Money >= 20)
                     {
                         entity.AddTileTower(_contexts.game.CreateTower(0, entity.view.Value.transform.position, Quaternion.identity), true);
                         model.Tower = entity.tileTower.Tower;
                         model.Block.view.Value.GetComponent<BlockView>().Color = true;
+                        TozerDefenceAplicqtion.Instance.Money -= 20;
                     }
-                    else
+                }
+                else
+                {
+                    if (TozerDefenceAplicqtion.Instance.Money >= (int)(20 * entity.tileTower.Tower.towerAI.Tier * 1.1f))
                     {
                         entity.tileTower.Tower.towerAI.Range += 2;
                         entity.tileTower.Tower.towerAI.Shootspeed *= 0.9f;
+                        entity.tileTower.Tower.towerAI.Tier++;
+                        TozerDefenceAplicqtion.Instance.Money -= (int)(20 * (entity.tileTower.Tower.towerAI.Tier - 1) * 1.1f);
                     }
-                    TozerDefenceAplicqtion.Instance.Money -= 20;
                 }
             }
         }

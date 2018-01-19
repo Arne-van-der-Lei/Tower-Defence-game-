@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using UnityEngine;
 
 namespace Systems.Logic
 {
@@ -23,6 +24,7 @@ namespace Systems.Logic
                 if(e.health.Health <= 0)
                 {
                     e.isDestroy = true;
+                    Debug.Log(e.money.Value);
                     TozerDefenceAplicqtion.Instance.Money += e.money.Value;
                 }
             }

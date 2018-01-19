@@ -22,16 +22,20 @@ namespace Systems.Input
 
         public void Execute()
         {
-
             foreach (var entity in _identifiableCreatures)
             {
                 Vector3 pos = entity.view.Value.transform.position;
-                if (Vector3.Distance(entity.point.Value.position,entity.view.Value.transform.position) <= 0.1)
+                if (Vector3.Distance(entity.point.Value,pos) <= 0.1)
                 {
-                    entity.point.Value.position = entity.enemyAi.path[entity.enemyAi.index].transform.position;
-                    if(entity.enemyAi.index < entity.enemyAi.path.Length-1)
+                    entity.point.Value = entity.enemyAi.path[entity.enemyAi.index].transform.position;
+                    if(entity.enemyAi.index < entity.enemyAi.path.Length)
                     {
                         entity.enemyAi.index++;
+                    }
+
+                    if (entity.enemyAi.path.Length == entity.enemyAi.index)
+                    {
+                        entity.isPlayerDamage = true;
                     }
                 }
             }
